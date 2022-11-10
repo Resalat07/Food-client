@@ -45,7 +45,7 @@ const Update = () => {
             <form onSubmit={handleAddUser}>
                 <textarea onBlur={handleInputBlur} type="text" name="review" id="" placeholder='Details' className="input input-bordered w-full h-24 m-4" required />
                 <br />
-                <button type="submit" className='btn btn-success m-4'>Add User</button>
+                <button type="submit" className='btn btn-success m-4'>Update Review</button>
             </form>
 
         </div>

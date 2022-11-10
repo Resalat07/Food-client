@@ -46,7 +46,7 @@ const Admin = () => {
                 <br />
                 <textarea onBlur={handleInputBlur} type="text" name="details" id="" placeholder='Details' className="input input-bordered w-full h-24 m-4" required />
                 <br />
-                <button type="submit" className='btn btn-success m-4'>Update</button>
+                <button type="submit" className='btn btn-success m-4'>Add Product</button>
             </form>
 
         </div>
