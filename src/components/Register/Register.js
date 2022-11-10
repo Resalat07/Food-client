@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Lottie from 'lottie-react'
 import loginn  from '../../image/login.json'
 import { FaGoogle } from 'react-icons/fa'
@@ -9,6 +9,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 
 const Register = () => {
+    const [error , setError] =useState('');
     const { createUser , providerLogin} = useContext(AuthContext);
     const handleSignUp = event => {
         event.preventDefault();
@@ -22,7 +23,7 @@ const Register = () => {
                 console.log(user);
                 form.reset()
             })
-            .catch(err => console.error(err));
+            .catch(err => setError(err.message));
     }
 
 
@@ -32,7 +33,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
             })
-            .catch(error => console.log(error))
+            .catch(err => console.log(err))
     }
     return (
         <div>
@@ -64,7 +65,10 @@ const Register = () => {
                                     </label>
                                     <input type="text" name='password' placeholder="password" className="input input-bordered" />
                                     <label className="label">
-                                        <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                        <Link href="#" to='/login' className="label-text-alt link link-hover">Go to login</Link>
+                                    </label>
+                                    <label className="label">
+                                        <p  className="label-text-alt link link-hover">{error}</p>
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">

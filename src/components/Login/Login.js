@@ -1,10 +1,12 @@
 import Lottie from 'lottie-react'
 import loginn from '../../image/loginhi.json'
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+
+    const [ error,setErr] =useState()
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -51,7 +53,7 @@ const Login = () => {
                         navigate(from, { replace: true });
                     });
             })
-            .catch(err => console.error(err));
+            .catch(err => setErr(err.message));
     }
 
 
@@ -81,7 +83,10 @@ const Login = () => {
                                     </label>
                                     <input type="text" name='password' placeholder="password" className="input input-bordered" />
                                     <label className="label">
-                                        <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                        <Link href="#" to='/register' className="label-text-alt link link-hover">Or Register .</Link>
+                                    </label>
+                                    <label className="label">
+                                        <p  className="label-text-alt link link-hover">{error}</p>
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
