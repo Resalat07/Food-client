@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 const ProductDetails = () => {
 
     const { name, img, details, price, _id } = useLoaderData()
@@ -17,7 +21,9 @@ const ProductDetails = () => {
 
     console.log(reviews);
 
-
+    const notify = () =>{
+        return toast;
+    }
 
 
     const handleReview = (e) => {
@@ -53,7 +59,16 @@ const ProductDetails = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Review post successfully');
+                    toast.success('Review added successfully', {
+                        position: "top-center",
+                        autoClose: 1986,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                     form.reset()
                 }
             })
@@ -90,7 +105,19 @@ const ProductDetails = () => {
 
                     <br />
 
-                    <input type="submit" value='Review' className='btn bg-orange-500 text-white m-3' />
+
+                    <input onClick={notify} type="submit" value='Review' className='btn bg-orange-500 text-white m-3' />
+                    <ToastContainer
+                    position="top-center"
+                    autoClose={1986}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"/>
 
 
 
