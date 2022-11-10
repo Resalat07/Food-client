@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import ReviewTable from '../ReviewTable/ReviewTable';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Myreviews = () => {
     const { user } = useContext(AuthContext)
@@ -18,21 +20,32 @@ const Myreviews = () => {
 
 
     const handleDelete = (id) => {
-        const prossed = window.confirm("Are you want to delete this? ")
-        if (prossed) {
-            fetch(`https://food-server-iota.vercel.app/reviews/${id}`, {
-                method: 'DELETE'
+        // const prossed = window.confirm("Are you want to delete this? ")
+        // if (prossed) {
+        fetch(`https://food-server-iota.vercel.app/reviews/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    toast.success('Review delete successfully', {
+                        position: "top-center",
+                        autoClose: 1986,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    const remaining = reviews.filter(rve => rve._id !== id)
+                    setReviews(remaining)
+                }
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.deletedCount > 0) {
-                        alert('delete successfully')
-                        const remaining = reviews.filter(rve => rve._id !== id)
-                        setReviews(remaining)
-                    }
-                })
-        }
+        // }
+
+        return toast
     }
 
 

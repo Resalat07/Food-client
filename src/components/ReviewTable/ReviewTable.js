@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer} from 'react-toastify';
 
 const ReviewTable = ({ rvw, handleDelete, }) => {
     const { customer, review, email, serviceName, _id, price, service } = rvw;
@@ -18,6 +19,17 @@ const ReviewTable = ({ rvw, handleDelete, }) => {
             <th>
                 <label>
                     <button onClick={() => handleDelete(_id)} className='btn btn-ghost btn-xs'><span className='text-orange-500'>X</span></button>
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={1986}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light" />
                 </label>
             </th>
 

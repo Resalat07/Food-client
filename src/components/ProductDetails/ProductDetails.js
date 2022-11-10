@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ProductDetails = () => {
@@ -21,7 +21,7 @@ const ProductDetails = () => {
 
     console.log(reviews);
 
-    const notify = () =>{
+    const notify = () => {
         return toast;
     }
 
@@ -68,7 +68,7 @@ const ProductDetails = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "light",
-                        });
+                    });
                     form.reset()
                 }
             })
@@ -108,16 +108,16 @@ const ProductDetails = () => {
 
                     <input onClick={notify} type="submit" value='Review' className='btn bg-orange-500 text-white m-3' />
                     <ToastContainer
-                    position="top-center"
-                    autoClose={1986}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"/>
+                        position="top-center"
+                        autoClose={1986}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light" />
 
 
 
