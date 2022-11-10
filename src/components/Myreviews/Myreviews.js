@@ -50,7 +50,7 @@ const Myreviews = () => {
     }
 
     if(len === 0){
-        return(<div className='mt-80 mb-96 '>
+        return(<div className=''>
             <p className=' text-5xl text-orange-500 font-semibold text-center'>No review</p>
             <div className='flex justify-center m-6'>
             <Link to='/allProducts' className='btn bg-orange-500 text-white '>Add Some</Link>

@@ -5,10 +5,10 @@ import Header from '../components/Header/Header';
 
 const Main = () => {
     return (
-        <div>
+        <div className='flex flex-col h-screen justify-between'>
             <Header></Header>
-            <Outlet></Outlet>
-            <Footer></Footer>
+            <Outlet className=' mb-auto'></Outlet>
+            <Footer className=''></Footer>
             
         
             
