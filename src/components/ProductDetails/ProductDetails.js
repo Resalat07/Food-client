@@ -87,7 +87,7 @@ const ProductDetails = () => {
                     <p>{details}</p>
                     <p className=' text-orange-500 font-semibold'>{price} TK.</p>
                     <div className="card-actions">
-                        <button className="btn bg-orange-500 text-white">Reviews</button>
+                        
                         <button className="btn bg-orange-500 text-white">add to Cart</button>
                     </div>
 
