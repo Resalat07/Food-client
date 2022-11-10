@@ -35,8 +35,8 @@ const Service = ({ service }) => {
                 <p>{details.slice(0, 100)}<span className=' text-orange-500'>...</span></p>
                 <p className=' text-orange-500 font-semibold'>{price} TK</p>
                 <div className="card-actions justify-start">
-                    <button className="btn bg-orange-500  text-white"><Link to={`/productDetails/${_id}`}> Show Details</Link> < AiOutlineArrowRight className='m-2' />
-                    </button>
+                <Link to={`/productDetails/${_id}`}><button className="btn bg-orange-500  text-white"> Show Details < AiOutlineArrowRight className='m-2' />
+                    </button></Link>
                 </div>
             </div>
         </div>
