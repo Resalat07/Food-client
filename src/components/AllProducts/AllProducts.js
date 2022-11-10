@@ -31,12 +31,12 @@ const AllProducts = () => {
 
     return (
         <div>
-            <div className='text-center mb-9'>
+            <div className='text-center mb-3'>
                 <p className="text-2xl font-bold text-orange-600">Foods Ares</p>
 
 
             </div>
-            <div className='grid gap-y-24 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+            <div className='grid gap-y-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     services.map(service => <Service
                         key={service._id}

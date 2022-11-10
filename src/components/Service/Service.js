@@ -15,8 +15,8 @@ const Service = ({ service }) => {
 
 
 
-        <div className="card card-compact w-96 bg-gray-800 shadow-xl mx-auto">
-            <figure className=' h-72'>
+        <div className="card card-compact w-80 bg-gray-800 shadow-xl mx-auto">
+            <figure className=' h-52'>
                 <PhotoProvider speed={() => 800}
                     easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}>
 
