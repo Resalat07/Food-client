@@ -3,10 +3,12 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import ReviewTable from '../ReviewTable/ReviewTable';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const Myreviews = () => {
     const { user } = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
+    const len = reviews.length
     useEffect(() => {
         fetch(`https://food-server-iota.vercel.app/reviews?email=${user?.email}`, {
             headers: {
@@ -20,8 +22,7 @@ const Myreviews = () => {
 
 
     const handleDelete = (id) => {
-        // const prossed = window.confirm("Are you want to delete this? ")
-        // if (prossed) {
+        
         fetch(`https://food-server-iota.vercel.app/reviews/${id}`, {
             method: 'DELETE'
         })
@@ -43,57 +44,74 @@ const Myreviews = () => {
                     setReviews(remaining)
                 }
             })
-        // }
+       
 
         return toast
     }
 
-
-
-
-    return (
-        <div>
-
-
-
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-
-                    <thead>
-                        <tr>
-                            <th>
-                                <label>
-
-                                </label>
-                            </th>
-                            <th>Img</th>
-                            <th>Name</th>
-                            <th>Service item</th>
-                            <th>email</th>
-                            <th>Review</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {
-                            reviews.map(rvw => <ReviewTable
-                                handleDelete={handleDelete}
-                                key={rvw._id}
-                                rvw={rvw}
-                            ></ReviewTable>)
-                        }
-
-
-                    </tbody>
-
-
-
-                </table>
+    if(len === 0){
+        return(<div className='mt-80 mb-96 '>
+            <p className=' text-5xl text-orange-500 font-semibold text-center'>No review</p>
+            <div className='flex justify-center m-6'>
+            <Link to='/allProducts' className='btn bg-orange-500 text-white '>Add Some</Link>
             </div>
+            
+        </div>)
+        
+    }
+    
 
-        </div>
-    );
+
+
+    else{
+        return (
+            <div>
+                <div>
+                
+                </div>
+                
+    
+    
+    
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+    
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label>
+    
+                                    </label>
+                                </th>
+                                <th>Img</th>
+                                <th>Name</th>
+                                <th>Service item</th>
+                                <th>email</th>
+                                <th>Review</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            {
+                                reviews.map(rvw => <ReviewTable
+                                    handleDelete={handleDelete}
+                                    key={rvw._id}
+                                    rvw={rvw}
+                                ></ReviewTable>)
+                            }
+    
+    
+                        </tbody>
+    
+    
+    
+                    </table>
+                </div>
+    
+            </div>
+        );
+    }
 };
 
 export default Myreviews;
