@@ -17,7 +17,7 @@ const Products = () => {
 
             <div >
                 <div className='text-center mb-9'>
-                    <p className="text-2xl font-bold text-orange-600">Foods Ares</p>
+                    <p className="text-2xl font-bold text-orange-600">Select your meals</p>
 
 
                 </div>

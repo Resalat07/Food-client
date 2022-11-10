@@ -42,16 +42,16 @@ export const router = createBrowserRouter([
             
             {
                 path: '/myReviews',
-                element: <Myreviews></Myreviews>
+                element: <PrivateRoute><Myreviews></Myreviews></PrivateRoute>
             },
             {
                 path: '/update/:id',
-                element: <Update></Update>,
+                element:<PrivateRoute> <Update></Update></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://food-server-resalat07.vercel.app/reviews/${params.id}`)
             },
             {
                 path: '/admin',
-                element: <Admin></Admin>
+                element: <PrivateRoute><Admin></Admin></PrivateRoute>
             },
             {
                 path:'/blog',
