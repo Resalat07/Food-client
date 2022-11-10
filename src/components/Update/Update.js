@@ -1,72 +1,51 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Update = () => {
-    const { user } = useContext(AuthContext)
-    const update = useLoaderData()
 
-    const [updateRev, setUpdateRev] = useState(update)
+    const storedRev = useLoaderData()
+    console.log(storedRev)
 
-    const handleReviewUpdate = (e) => {
-        e.preventDefault()
+    const [rev, setRev] = useState(storedRev);
 
-        const form = e.target;
+    const handleAddUser = event => {
+        event.preventDefault();
+        console.log(rev);
 
-        const reviews = form.review.value
-
-        const order = {
-
-            reviews
-
-        }
-
-        setUpdateRev(order)
-        console.log(updateRev)
-
-
-        // fetch(`https://food-server-iota.vercel.app/reviews/${update._id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(updateRev)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.modifiedCount > 0) {
-        //             alert('user updated')
-        //             console.log(data);
-        //         }
-
-        //     })
-
-
-
+        fetch(`https://food-server-resalat07.vercel.app/reviews/${storedRev._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(rev)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('User added successfully');
+                    event.target.reset();
+                }
+            })
     }
 
+    const handleInputBlur = event => {
+        const field = event.target.name;
+        const value = event.target.value;
+        const newUser = { ...rev }
+        newUser[field] = value;
+        setRev(newUser);
+    }
 
 
     return (
         <div>
-            {update.name}
-
-            <form onSubmit={handleReviewUpdate}>
-                <input name="yourName" type="text" className="input input-bordered w-full max-w-xs m-3" defaultValue={update.customer} readOnly />
-
-
-                <input name='email' type="email" defaultValue={user?.email} readOnly className="input input-bordered w-full max-w-xs m-3" />
+            {storedRev.customer}
+            <form onSubmit={handleAddUser}>
+                <textarea onBlur={handleInputBlur} type="text" name="review" id="" placeholder='Details' className="input input-bordered w-full h-24 m-4" required />
                 <br />
-
-
-                <textarea name='review' className="textarea textarea-bordered h-60 mt-3 w-full" placeholder="Your review"></textarea>
-
-                <br />
-
-                <input type="submit" value='Review' className='btn bg-orange-500 text-white m-3' />
-
-
-
+                <button type="submit" className='btn btn-success m-4'>Add User</button>
             </form>
 
         </div>

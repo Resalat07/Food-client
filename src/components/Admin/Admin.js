@@ -44,9 +44,9 @@ const Admin = () => {
                 <br />
                 <input onBlur={handleInputBlur} type="text" name="service_id" id="" placeholder='Like 01 , 02' className="input input-bordered w-full m-4" required />
                 <br />
-                <textarea onBlur={handleInputBlur} type="email" name="details" id="" placeholder='Details' className="input input-bordered w-full h-24 m-4" required />
+                <textarea onBlur={handleInputBlur} type="text" name="details" id="" placeholder='Details' className="input input-bordered w-full h-24 m-4" required />
                 <br />
-                <button type="submit" className='btn btn-success m-4'>Add User</button>
+                <button type="submit" className='btn btn-success m-4'>Update</button>
             </form>
 
         </div>
