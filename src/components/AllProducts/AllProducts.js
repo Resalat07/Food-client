@@ -32,7 +32,7 @@ const AllProducts = () => {
     return (
         <div>
             <div className='text-center mb-3'>
-                <p className="text-2xl font-bold text-orange-600">Foods Ares</p>
+                <p className="text-2xl font-bold text-orange-600">Order your food</p>
 
 
             </div>
