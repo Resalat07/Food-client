@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { ClimbingBoxLoader } from 'react-spinners';
 import Service from '../Service/Service';
 
 const AllProducts = () => {
@@ -7,6 +8,7 @@ const AllProducts = () => {
 
 
     const [count, setCount] = useState(0);
+    const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(5);
     const [services, setService] = useState([])
@@ -16,6 +18,7 @@ const AllProducts = () => {
             .then(data => {
                 setCount(data.count)
                 setService(data.services)
+                setLoading(false)
             })
     }, [page, size])
     // const {services ,count}= useLoaderData()
@@ -31,19 +34,37 @@ const AllProducts = () => {
 
     return (
         <div>
-            <div className='text-center mb-3'>
+            <div className='text-center mb-6'>
                 <p className="text-2xl font-bold text-orange-600">Order your food</p>
 
 
             </div>
-            <div className='grid gap-y-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                {
-                    services.map(service => <Service
-                        key={service._id}
-                        service={service}
-                    ></Service>)
-                }
-            </div>
+
+            {
+                loading ?
+
+                    <div  className=' flex justify-center pt-5'>
+                        <ClimbingBoxLoader
+                        color="#de7c15"
+                        size={31}
+                    />
+                    </div>
+
+                    :
+
+
+                    <div className='grid gap-y-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                        {
+                            services.map(service => <Service
+                                key={service._id}
+                                service={service}
+                            ></Service>)
+                        }
+                    </div>
+
+
+            }
+
 
 
             <div className=' flex justify-center p-6'>
