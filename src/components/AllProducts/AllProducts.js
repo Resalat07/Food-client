@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { ClimbingBoxLoader } from 'react-spinners';
 import Service from '../Service/Service';
+import { motion } from 'framer-motion';
 
 const AllProducts = () => {
 
@@ -12,6 +13,8 @@ const AllProducts = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(5);
     const [services, setService] = useState([])
+  
+    
     useEffect(() => {
         fetch(`https://food-server-iota.vercel.app/services?page=${page}&size=${size}`)
             .then(res => res.json())
@@ -21,6 +24,7 @@ const AllProducts = () => {
                 setLoading(false)
             })
     }, [page, size])
+    
     // const {services ,count}= useLoaderData()
     // console.log(count)
 
@@ -34,20 +38,17 @@ const AllProducts = () => {
 
     return (
         <div>
-            <div className='text-center mb-6'>
-                <p className="text-2xl font-bold text-orange-600">Order your food</p>
-
-
-            </div>
+            <h2 className=' text-3xl text-orange-500 text-center font-semibold m-6'>All Recipes</h2>
+            
 
             {
                 loading ?
 
-                    <div  className=' flex justify-center pt-5'>
+                    <div className=' flex justify-center pt-5'>
                         <ClimbingBoxLoader
-                        color="#de7c15"
-                        size={31}
-                    />
+                            color="#de7c15"
+                            size={31}
+                        />
                     </div>
 
                     :
@@ -55,10 +56,14 @@ const AllProducts = () => {
 
                     <div className='grid gap-y-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                         {
-                            services.map(service => <Service
+                            services.map(service => <div
+                                
+                            >
+                                <Service
                                 key={service._id}
                                 service={service}
-                            ></Service>)
+                            ></Service>
+                            </div>)
                         }
                     </div>
 

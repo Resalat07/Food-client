@@ -8,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetails = () => {
 
-    const { name, img, details, price, _id } = useLoaderData()
+    const { name, photo, details,
+        ingredients,  _id } = useLoaderData()
     const { user } = useContext(AuthContext)
 
     const [reviews, setReviews] = useState([])
@@ -38,7 +39,6 @@ const ProductDetails = () => {
         const order = {
             service: _id,
             serviceName: name,
-            price,
             customer: usrName,
             email,
             review,
@@ -81,14 +81,17 @@ const ProductDetails = () => {
 
 
             <div className="card  bg-base-100 shadow-xl">
-                <figure><img src={img} alt="Album" /></figure>
+                <figure><img src={photo} alt="Album" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-orange-500">{name}</h2>
+                    <h2 className="card-title text-2xl font-semibold text-orange-500">{name}</h2>
+                    <h1 className='text-xl text-orange-600 font-semibold p-6'>Ingredients</h1>
+                    <p>{ingredients}</p>
+                    <h1 className='text-xl text-orange-600 font-semibold p-6'>Steps</h1>
                     <p>{details}</p>
-                    <p className=' text-orange-500 font-semibold'>{price} TK.</p>
+                   
                     <div className="card-actions">
                         
-                        <button className="btn bg-orange-500 text-white">add to Cart</button>
+                       
                     </div>
 
                 </div>
@@ -131,7 +134,7 @@ const ProductDetails = () => {
                     {
                         reviews.map(review => <div key={review._id} className="card bg-indigo-900 shadow-xl m-6 bg-">
                             <div className="card-body">
-                                <img src={review.photos} className=' h-14 w-14 rounded-full' alt="" />
+                                <img src={review.photo} className=' h-14 w-14 rounded-full' alt="" />
                                 <h2 className="card-title">{review.customer}</h2>
                                 <p>{review.review}</p>
 

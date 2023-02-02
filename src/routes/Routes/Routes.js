@@ -2,6 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import Admin from "../../components/Admin/Admin";
 import AllProducts from "../../components/AllProducts/AllProducts";
 import Blog from "../../components/Blog/Blog";
+import Dessert from "../../components/CategoriesProduct/Dessert/Dessert";
+import Drinks from "../../components/CategoriesProduct/Drinks/Drinks";
+import NonVeg from "../../components/CategoriesProduct/NonVeg/NonVeg";
+import Veg from "../../components/CategoriesProduct/Veg/Veg";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
 import Myreviews from "../../components/Myreviews/Myreviews";
@@ -19,7 +23,9 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                
+                
             },
             {
                 path: '/login',
@@ -56,6 +62,22 @@ export const router = createBrowserRouter([
             {
                 path:'/blog',
                 element:<Blog></Blog>
+            },
+            {
+                path:'/veg',
+                element:<Veg></Veg>
+            },
+            {
+                path:'/nonVeg',
+                element:<NonVeg></NonVeg>
+            },
+            {
+                path:'/dessert',
+                element:<Dessert></Dessert>
+            },
+            {
+                path:'/drinks',
+                element:<Drinks></Drinks>
             }
         ]
 

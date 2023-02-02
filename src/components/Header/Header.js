@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { motion } from 'framer-motion';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -47,13 +48,38 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl">Le <span className='text-orange-500'>FoodZone</span></Link>
+                    <motion.div initial={{
+                                x: -200,
+                    
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                x: 0
+                            }}
+
+                            transition={{
+                                duration:1
+                            }}
+                            
+                            viewport={{ once: true }}><Link to='/' className="btn btn-ghost normal-case text-xl">Le <span className='text-orange-500'>FoodZone</span></Link></motion.div>
                 </div>
-                <div className="navbar-end hidden lg:flex">
+                <motion.div initial={{
+                                x: +200,
+                    
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                x: 0
+                            }}
+                            transition={{
+                                duration:1
+                            }}
+                            
+                            viewport={{ once: true }} className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         {menuItems}
                     </ul>
-                </div>
+                </motion.div>
 
             </div>
 
