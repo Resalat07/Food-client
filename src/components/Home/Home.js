@@ -17,10 +17,11 @@ import { motion } from "framer-motion";
 
 const Home = () => {
     return (
-        <div className=' d-flex justify-center align-middle'>
+        <div className=' flex justify-center '>
 
 
 
+            <div>
             <div class="grid lg:grid-cols-2 md:grid-cols-2 xs:grid-cols-12 order-first  gap-4">
                 <div className='mt-9'>
 
@@ -46,7 +47,7 @@ const Home = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-6 m-6 animate__animated  animate__fadeInUp'>
                 <motion.div className="box"
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 2.9 }}
+                    whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }} >
                     <div className="card  bg-violet-800 shadow-xl ">
                         <figure className="px-10 pt-10">
@@ -98,17 +99,20 @@ const Home = () => {
 
             <div className='mt-6  '>
                 <h2 className=' text-center text-3xl font-semibold text-orange-500 m-10'>Category</h2>
-                <div className='flex justify-center items-center'>
+                <div className='flex justify-center items-center p-3'>
 
                     <Categories></Categories>
 
                 </div>
 
                 <h2 className=' text-center text-3xl font-semibold text-orange-500 m-10'>Select Your Meal</h2>
+                <div className='flex justify-center items-center gap-6'>
                 <Products></Products>
+                </div>
             </div>
             <div className=' flex justify-center p-6'>
                 <Link to='/allProducts'><button className='btn bg-orange-500 text-white'>Show All Items</button></Link>
+            </div>
             </div>
 
 

@@ -72,7 +72,7 @@ const Drinks = () => {
                     
                     
                             whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 2.9 }}
+                                        whileTap={{ scale: 0.9 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }} className="card card-compact w-80 bg-gray-800 shadow-xl mx-auto">
                             <figure className=' h-52'>
                                 <PhotoProvider speed={() => 800}
